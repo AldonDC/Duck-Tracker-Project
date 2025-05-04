@@ -13,6 +13,110 @@ import colorsys
 from scipy.ndimage import gaussian_filter1d
 import math
 import plotly.graph_objects as go
+import shutil
+
+def process_cameraman_visualizations(cameraman_visualizations_folder):
+    """
+    Procesa las visualizaciones del movimiento del camarógrafo para incluirlas en el informe
+    
+    Args:
+        cameraman_visualizations_folder: Carpeta con las visualizaciones del camarógrafo
+        
+    Returns:
+        Lista de tuplas con (nombre_archivo, título, descripción) para cada visualización
+    """
+    # Verificar si la carpeta existe
+    if not os.path.exists(cameraman_visualizations_folder):
+        print(f"¡Advertencia! La carpeta {cameraman_visualizations_folder} no existe.")
+        return []
+    
+    # Mapeo de archivos a títulos y descripciones
+    visualization_info = {
+        'cameraman_3d_trajectory.png': (
+            'Trayectoria 3D del Camarógrafo', 
+            'Visualización tridimensional del desplazamiento del camarógrafo en el espacio, ' +
+            'mostrando la evolución de su posición y orientación a lo largo del tiempo.'
+        ),
+        'cameraman_xy_trajectory.png': (
+            'Vista Superior del Movimiento (XY)', 
+            'Proyección en el plano horizontal (plano XY) del movimiento del camarógrafo, ' +
+            'mostrando su desplazamiento desde una vista cenital.'
+        ),
+        'cameraman_xz_trajectory.png': (
+            'Vista Lateral del Movimiento (XZ)', 
+            'Proyección en el plano vertical (plano XZ) del movimiento del camarógrafo, ' +
+            'revelando cambios de altura y profundidad durante la grabación.'
+        ),
+        'cameraman_rotation.png': (
+            'Rotación del Camarógrafo', 
+            'Gráfica que muestra la evolución de los ángulos de rotación (roll, pitch, yaw) ' +
+            'del camarógrafo a lo largo del tiempo, revelando cómo cambia la orientación de la cámara.'
+        ),
+        'cameraman_displacement.png': (
+            'Desplazamiento del Camarógrafo', 
+            'Gráfica que muestra la magnitud del desplazamiento del camarógrafo desde su ' +
+            'posición inicial a lo largo del tiempo, cuantificando la distancia recorrida.'
+        ),
+        'cameraman_animation.mp4': (
+            'Animación del Movimiento del Camarógrafo',
+            'Animación 3D que muestra el movimiento y rotación del camarógrafo ' +
+            'a lo largo del tiempo, permitiendo visualizar su comportamiento de forma dinámica.'
+        )
+    }
+    
+    # Lista para almacenar las visualizaciones encontradas
+    cameraman_visualizations = []
+    
+    # Comprobar específicamente si el archivo de animación existe en la carpeta
+    animation_file = 'cameraman_animation.mp4'
+    animation_path = os.path.join(cameraman_visualizations_folder, animation_file)
+    
+    # Buscar archivos en la carpeta
+    for filename in os.listdir(cameraman_visualizations_folder):
+        if filename in visualization_info:
+            title, description = visualization_info[filename]
+            cameraman_visualizations.append((filename, title, description))
+    
+    # Verificar si hay algún archivo de video o animación adicional que no esté en la lista predefinida
+    for filename in os.listdir(cameraman_visualizations_folder):
+        if filename.endswith(('.mp4', '.gif', '.avi')) and filename not in visualization_info:
+            # Si encontramos algún archivo de video no mapeado, lo añadimos con un título genérico
+            title = f"Animación: {os.path.splitext(filename)[0].replace('_', ' ').title()}"
+            description = "Animación que muestra el movimiento del camarógrafo durante la grabación."
+            cameraman_visualizations.append((filename, title, description))
+            print(f"Encontrado archivo de animación adicional: {filename}")
+    
+    # Si no se encuentra ninguna animación, buscar en ubicaciones alternativas
+    if not any(filename.endswith('.mp4') for filename, _, _ in cameraman_visualizations):
+        print("No se encontró ningún archivo de animación del camarógrafo. Buscando en ubicaciones alternativas...")
+        
+        # Construir posibles rutas alternativas para buscar el archivo de animación
+        base_dir = os.path.dirname(cameraman_visualizations_folder)
+        parent_dir = os.path.dirname(base_dir)
+        
+        alt_paths = [
+            os.path.join(base_dir, animation_file),
+            os.path.join(parent_dir, animation_file),
+            os.path.join(parent_dir, "cameraman_visualizations", animation_file),
+            os.path.join(os.path.dirname(parent_dir), "cameraman_visualizations", animation_file)
+        ]
+        
+        for alt_path in alt_paths:
+            if os.path.exists(alt_path):
+                print(f"¡Encontrado archivo de animación en ubicación alternativa: {alt_path}!")
+                # Copiar el archivo a la carpeta de visualizaciones del camarógrafo
+                import shutil
+                try:
+                    shutil.copy2(alt_path, os.path.join(cameraman_visualizations_folder, animation_file))
+                    title, description = visualization_info[animation_file]
+                    cameraman_visualizations.append((animation_file, title, description))
+                    print(f"Archivo de animación copiado a {cameraman_visualizations_folder}")
+                    break
+                except Exception as e:
+                    print(f"Error al copiar el archivo de animación: {e}")
+    
+    print(f"Encontradas {len(cameraman_visualizations)} visualizaciones del camarógrafo")
+    return cameraman_visualizations
 
 def create_duck_3d_model(data_file, output_folder):
     """
@@ -691,7 +795,8 @@ def generate_additional_visualizations(data_file, output_folder):
     return stats_file
 
 def create_enhanced_html_report(data_file, visualizations_folder, output_folder, 
-                                code_files=None, animation_files=None, include_3d_model=True):
+                                code_files=None, animation_files=None, include_3d_model=True,
+                                cameraman_visualizations_folder=None):
     """
     Crea un informe HTML mejorado con todas las visualizaciones, análisis,
     código fuente, animaciones y modelos 3D
@@ -703,6 +808,7 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
         code_files: Lista de archivos Python para incluir como código fuente
         animation_files: Lista de archivos de animación (MP4, GIF)
         include_3d_model: Si se debe incluir el modelo 3D en el informe
+        cameraman_visualizations_folder: Carpeta con visualizaciones del camarógrafo
     """
     # Crear carpeta de salida si no existe
     os.makedirs(output_folder, exist_ok=True)
@@ -744,6 +850,25 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
             for duck_id, duck_info in positions.items():
                 if duck_id not in duck_colors:
                     duck_colors[duck_id] = duck_info.get('color', 'yellow')
+    
+    # Procesar visualizaciones del camarógrafo si se proporcionan
+    cameraman_visualizations = []
+    if cameraman_visualizations_folder and os.path.exists(cameraman_visualizations_folder):
+        cameraman_visualizations = process_cameraman_visualizations(cameraman_visualizations_folder)
+        
+        # Crear una carpeta para las visualizaciones del camarógrafo dentro de la carpeta de salida del informe
+        informe_cameraman_folder = os.path.join(output_folder, 'cameraman_visualizations')
+        os.makedirs(informe_cameraman_folder, exist_ok=True)
+        
+        # Copiar las visualizaciones del camarógrafo a la carpeta del informe
+        for filename, _, _ in cameraman_visualizations:
+            source_path = os.path.join(cameraman_visualizations_folder, filename)
+            target_path = os.path.join(informe_cameraman_folder, filename)
+            if os.path.exists(source_path):
+                shutil.copy2(source_path, target_path)
+                print(f"Copiado: {filename} a {informe_cameraman_folder}")
+            else:
+                print(f"Advertencia: No se pudo encontrar {source_path}")
     
     # Función para calcular estadísticas adicionales
     def calculate_additional_stats(data):
@@ -1313,6 +1438,20 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
                 </li>
                 <li><a href="#codigo">6. Código Fuente</a></li>
                 <li><a href="#conclusiones">7. Conclusiones</a></li>
+                """
+    
+    # Añadir enlace a la sección del camarógrafo si hay visualizaciones disponibles
+    if cameraman_visualizations:
+        html_content += """
+                <li><a href="#cameraman">8. Análisis del Movimiento del Camarógrafo</a></li>
+                <li><a href="#visualizaciones-interactivas">9. Visualizaciones Interactivas</a></li>
+        """
+    else:
+        html_content += """
+                <li><a href="#visualizaciones-interactivas">8. Visualizaciones Interactivas</a></li>
+        """
+    
+    html_content += """
             </ul>
         </div>
         
@@ -1643,10 +1782,96 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
             <p>Estos patrones de movimiento proporcionan información valiosa sobre el comportamiento de los patos en entornos controlados, contribuyendo a una mejor comprensión de su ecología y comportamiento social.</p>
         </section>
         
+        """
+    
+    # Añadir sección de análisis del camarógrafo si hay visualizaciones disponibles
+    if cameraman_visualizations:
+        html_content += """
+        <section id="cameraman">
+            <h2>8. Análisis del Movimiento del Camarógrafo</h2>
+            <p>Esta sección presenta el análisis del movimiento y rotación del camarógrafo durante la grabación, permitiendo entender cómo el movimiento de la cámara afecta a las trayectorias de los patos.</p>
+            
+            <div class="visualization-card">
+                <h3>Movimiento del Camarógrafo en el Espacio</h3>
+                <p>Las siguientes visualizaciones muestran el desplazamiento y rotación del camarógrafo durante la grabación, permitiendo correlacionar su movimiento con el comportamiento de los patos.</p>
+            </div>
+        """
+        
+        # Buscar si existe el archivo de animación
+        animation_found = False
+        animation_filename = None
+        animation_title = None
+        animation_description = None
+        
+        for filename, title, description in cameraman_visualizations:
+            if filename.endswith('.mp4'):
+                animation_found = True
+                animation_filename = filename
+                animation_title = title
+                animation_description = description
+                break
+        
+        # Si hay animación, ponerla primero como elemento destacado
+        if animation_found:
+            html_content += f"""
+            <div class="animation-container" style="background-color: #f0f8ff; border: 1px solid #3498db; border-radius: 10px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2); margin: 30px 0;">
+                <h3 style="color: #3498db; text-align: center; margin-bottom: 20px;">{animation_title}</h3>
+                <div style="display: flex; justify-content: center;">
+                    <video width="800" height="600" controls style="border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <source src="cameraman_visualizations/{animation_filename}" type="video/mp4">
+                        Tu navegador no soporta el tag de video.
+                    </video>
+                </div>
+                <p class="card-description" style="text-align: center; margin-top: 15px; padding: 0 30px; font-style: italic;">{animation_description}</p>
+            </div>
+            """
+        
+        # Añadir las visualizaciones estáticas
+        for filename, title, description in cameraman_visualizations:
+            # Omitir el archivo de video que ya se mostró
+            if filename.endswith('.mp4'):
+                continue
+                
+            # Determinar si es una imagen o video
+            if filename.endswith(('.png', '.jpg', '.jpeg')):
+                html_content += f"""
+                <div class="visualization-card">
+                    <img src="cameraman_visualizations/{filename}" alt="{title}">
+                    <div class="card-caption">{title}</div>
+                    <div class="card-description">{description}</div>
+                </div>
+                """
+        
+        # Añadir análisis e interpretación
+        html_content += """
+        <div class="visualization-card">
+            <h3>Interpretación del Movimiento del Camarógrafo</h3>
+            <p>El análisis del movimiento del camarógrafo revela información importante sobre la dinámica de la grabación:</p>
+            <ul>
+                <li>El desplazamiento del camarógrafo muestra patrones que pueden influir en el comportamiento de los patos observados.</li>
+                <li>La rotación de la cámara proporciona contexto sobre los cambios de perspectiva durante la grabación.</li>
+                <li>La correlación entre el movimiento del camarógrafo y las trayectorias de los patos puede ayudar a identificar reacciones a la presencia humana.</li>
+                <li>El análisis conjunto de ambos movimientos permite una interpretación más precisa de los patrones de comportamiento natural versus comportamiento inducido.</li>
+            </ul>
+        </div>
+        </section>
+        """
+        
+        # Actualizar la numeración de la sección "Visualizaciones Interactivas"
+        html_content += """
+        <section>
+            <h2>9. Visualizaciones Interactivas</h2>
+            <p>A continuación se presentan visualizaciones interactivas que permiten explorar los datos de diferentes maneras.</p>
+        """
+    else:
+        # Si no hay visualizaciones del camarógrafo, mantener la numeración original
+        html_content += """
         <section>
             <h2>8. Visualizaciones Interactivas</h2>
             <p>A continuación se presentan visualizaciones interactivas que permiten explorar los datos de diferentes maneras.</p>
+        """
             
+    html_content += """
             <div class="interactive-section">
                 <h3>Selección de Visualizaciones</h3>
                 
@@ -1656,6 +1881,15 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
                         <button class="tab-btn" onclick="openTab(event, 'tab-velocidades')">Velocidades</button>
                         <button class="tab-btn" onclick="openTab(event, 'tab-densidad')">Mapas de Calor</button>
                         <button class="tab-btn" onclick="openTab(event, 'tab-modelo3d')">Modelo 3D</button>
+    """
+    
+    # Añadir pestaña del camarógrafo si hay visualizaciones disponibles
+    if cameraman_visualizations:
+        html_content += """
+                        <button class="tab-btn" onclick="openTab(event, 'tab-cameraman')">Camarógrafo</button>
+        """
+    
+    html_content += """
                     </div>
                     
                     <div id="tab-trayectorias" class="tab-content active">
@@ -1682,38 +1916,66 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
                         <img src="../visualizations/modelo_3d_patos_profesional.png" alt="Modelo 3D" style="width:100%; max-width:800px;">
                         <p><a href="../visualizations/modelo_3d_patos_profesional.html" target="_blank" class="model-3d-link">Explorar Modelo 3D Interactivo</a></p>
                     </div>
+                    """
+    
+    # Añadir contenido de la pestaña del camarógrafo si hay visualizaciones disponibles
+    if cameraman_visualizations:
+        # Buscar la visualización 3D del camarógrafo
+        cam_3d_vis = next((f for f, _, _ in cameraman_visualizations if "3d" in f.lower()), None)
+        # Si no hay visualización 3D, usar la primera disponible
+        if not cam_3d_vis and cameraman_visualizations:
+            cam_3d_vis = cameraman_visualizations[0][0]
+            
+        html_content += f"""
+                    <div id="tab-cameraman" class="tab-content">
+                        <h4>Movimiento del Camarógrafo</h4>
+                        <p>Análisis del desplazamiento y rotación del camarógrafo durante la grabación.</p>
+                        """
+        
+        if cam_3d_vis:
+            html_content += f"""
+                        <img src="cameraman_visualizations/{cam_3d_vis}" alt="Movimiento del Camarógrafo" style="width:100%; max-width:800px;">
+            """
+            
+        html_content += """
+                        <p>El movimiento del camarógrafo puede influir en el comportamiento de los patos, proporcionando contexto importante para el análisis.</p>
+                        <p><a href="#cameraman" class="model-3d-link">Ver Análisis Completo del Camarógrafo</a></p>
+                    </div>
+        """
+    
+    html_content += """
                 </div>
             </div>
         </section>
+
+<div class="footer">
+    <p>Informe generado con el sistema Duck-Tracker | Fecha: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}</p>
+    <p>Desarrollado para análisis avanzado de patrones de movimiento en patos</p>
+</div>
+
+<script>
+    function openTab(evt, tabName) {{
+        // Ocultar todos los contenidos de pestañas
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {{
+            tabContents[i].style.display = "none";
+            tabContents[i].className = tabContents[i].className.replace(" active", "");
+        }}
         
-        <div class="footer">
-            <p>Informe generado con el sistema Duck-Tracker | Fecha: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}</p>
-            <p>Desarrollado para análisis avanzado de patrones de movimiento en patos</p>
-        </div>
+        // Desactivar todos los botones
+        var tabButtons = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabButtons.length; i++) {{
+            tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+        }}
         
-        <script>
-            function openTab(evt, tabName) {{
-                // Ocultar todos los contenidos de pestañas
-                var tabContents = document.getElementsByClassName("tab-content");
-                for (var i = 0; i < tabContents.length; i++) {{
-                    tabContents[i].style.display = "none";
-                    tabContents[i].className = tabContents[i].className.replace(" active", "");
-                }}
-                
-                // Desactivar todos los botones
-                var tabButtons = document.getElementsByClassName("tab-btn");
-                for (var i = 0; i < tabButtons.length; i++) {{
-                    tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-                }}
-                
-                // Mostrar el contenido de la pestaña actual y activar el botón
-                document.getElementById(tabName).style.display = "block";
-                document.getElementById(tabName).className += " active";
-                evt.currentTarget.className += " active";
-            }}
-        </script>
-    </body>
-    </html>
+        // Mostrar el contenido de la pestaña actual y activar el botón
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).className += " active";
+        evt.currentTarget.className += " active";
+    }}
+</script>
+</body>
+</html>
     """
     
     # Guardar el archivo HTML
@@ -1726,49 +1988,154 @@ def create_enhanced_html_report(data_file, visualizations_folder, output_folder,
     return output_file
 
 if __name__ == "__main__":
-    # Ruta al archivo de datos combinados
-    data_file = "/home/alfonso/Duck-Tracker-Project/batch_output/merged_results/merged_tracking_data.json"
+    import os
+    import shutil
+    
+    # Obtener la ruta base del proyecto
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Rutas para archivos y carpetas (usando rutas relativas desde el directorio base)
+    # Si no existe el archivo merged_tracking_data.json, podemos usar cualquier archivo JSON del proyecto como ejemplo
+    data_file = os.path.join(base_dir, "batch_output/merged_results/merged_tracking_data.json")
+    
+    # Verificar si el archivo existe, si no, crear un archivo de ejemplo
+    if not os.path.exists(data_file):
+        print(f"Aviso: No se encontró el archivo de datos fusionados en {data_file}")
+        print("Creando un archivo de ejemplo para la demostración...")
+        
+        # Crear las carpetas necesarias
+        os.makedirs(os.path.dirname(data_file), exist_ok=True)
+        
+        # Crear un archivo JSON de ejemplo
+        import json
+        example_data = {
+            "frames": {
+                "0": {
+                    "frame_number": 0,
+                    "positions": {
+                        "duck1": {"position": [100, 150], "color": "yellow"},
+                        "duck2": {"position": [200, 250], "color": "black"}
+                    }
+                },
+                "1": {
+                    "frame_number": 1,
+                    "positions": {
+                        "duck1": {"position": [105, 155], "color": "yellow"},
+                        "duck2": {"position": [195, 245], "color": "black"}
+                    }
+                },
+                # Añadir más frames de ejemplo para tener suficientes datos para visualizaciones
+                "2": {
+                    "frame_number": 2,
+                    "positions": {
+                        "duck1": {"position": [110, 160], "color": "yellow"},
+                        "duck2": {"position": [190, 240], "color": "black"}
+                    }
+                },
+                "3": {
+                    "frame_number": 3,
+                    "positions": {
+                        "duck1": {"position": [115, 165], "color": "yellow"},
+                        "duck2": {"position": [185, 235], "color": "black"}
+                    }
+                }
+            }
+        }
+        with open(data_file, 'w') as f:
+            json.dump(example_data, f, indent=2)
+        print(f"Archivo de ejemplo creado en {data_file}")
     
     # Carpeta con las visualizaciones
-    visualizations_folder = "/home/alfonso/Duck-Tracker-Project/batch_output/visualizations"
+    visualizations_folder = os.path.join(base_dir, "batch_output/visualizations")
+    os.makedirs(visualizations_folder, exist_ok=True)
+    
+    # Carpeta con las visualizaciones del camarógrafo
+    cameraman_visualizations_folder = os.path.join(base_dir, "batch_output/cameraman_visualizations")
+    
+    # Verificar si la carpeta existe
+    if not os.path.exists(cameraman_visualizations_folder):
+        print(f"Aviso: No se encontró la carpeta de visualizaciones del camarógrafo en {cameraman_visualizations_folder}")
+        print("Buscando las visualizaciones en rutas alternativas...")
+        
+        # Buscar archivos de visualización del camarógrafo en carpetas alternativas
+        alt_paths = [
+            os.path.join(base_dir, "cameraman_visualizations"),
+            os.path.join(os.path.dirname(base_dir), "cameraman_visualizations"),
+            os.path.join(base_dir, "Duck-Tracker-Project-main/batch_output/cameraman_visualizations"),
+            os.path.join(os.path.dirname(os.path.dirname(base_dir)), "Duck-Tracker-Project-main/batch_output/cameraman_visualizations")
+        ]
+        
+        for path in alt_paths:
+            if os.path.exists(path):
+                cameraman_visualizations_folder = path
+                print(f"Encontradas visualizaciones del camarógrafo en: {path}")
+                break
+        else:
+            print("No se encontraron visualizaciones del camarógrafo en ninguna ubicación alternativa.")
     
     # Carpeta para guardar el informe
-    output_folder = "/home/alfonso/Duck-Tracker-Project/batch_output/informe"
+    output_folder = os.path.join(base_dir, "batch_output/informe")
+    os.makedirs(output_folder, exist_ok=True)
     
     # Lista de archivos de código a incluir
     code_files = [
-        "/home/alfonso/Duck-Tracker/visualize_trajectories.py",
-        "/home/alfonso/Duck-Tracker/create_animation.py",
-        "/home/alfonso/Duck-Tracker/duck_3d_model.py"  # Añadido el archivo del modelo 3D
+        os.path.join(base_dir, "visualize_trajectories.py"),
+        os.path.join(base_dir, "create_animation.py"),
+        os.path.join(base_dir, "cameraman_movement.py"),
+        os.path.join(base_dir, "visualize_cameraman.py")
     ]
     
-    # Generar visualizaciones adicionales
-    print("Paso 1: Generando visualizaciones adicionales...")
-    generate_additional_visualizations(data_file, visualizations_folder)
+    # Filtrar solo los archivos de código que existen
+    code_files = [f for f in code_files if os.path.exists(f)]
     
-    # Generar modelo 3D
-    print("\nPaso 2: Creando modelo 3D de patos...")
-    model_3d_path, _, _ = create_duck_3d_model(data_file, visualizations_folder)
+    try:
+        # Generar visualizaciones adicionales
+        print("Paso 1: Generando visualizaciones adicionales...")
+        generate_additional_visualizations(data_file, visualizations_folder)
+    except Exception as e:
+        print(f"Error al generar visualizaciones adicionales: {e}")
+        print("Continuando con el resto del proceso...")
+    
+    try:
+        # Generar modelo 3D
+        print("\nPaso 2: Creando modelo 3D de patos...")
+        model_3d_path, _, _ = create_duck_3d_model(data_file, visualizations_folder)
+    except Exception as e:
+        print(f"Error al crear el modelo 3D: {e}")
+        print("Continuando con el resto del proceso...")
+        model_3d_path = None
     
     # Generar informe HTML mejorado
-    print("\nPaso 3: Generando informe HTML avanzado con visualizaciones y modelo 3D...")
-    report_file = create_enhanced_html_report(
-        data_file, 
-        visualizations_folder, 
-        output_folder,
-        code_files=code_files,
-        include_3d_model=True
-    )
-    
-    print(f"\n¡Informe avanzado generado con éxito en {report_file}!")
-    print("Incluye:")
-    print("  - Visualizaciones 2D y 3D estáticas")
-    print("  - Animaciones de movimiento")
-    print("  - Modelo 3D interactivo de patos")
-    print("  - Análisis estadísticos detallados")
-    print("  - Código fuente y documentación")
-    print("\nModo de uso:")
-    print("  1. Abre el archivo HTML en tu navegador para ver el informe completo")
-    print("  2. Utiliza las pestañas interactivas para explorar diferentes visualizaciones")
-    print("  3. El modelo 3D permite rotación, zoom y exploración completa de las trayectorias")
-    print("  4. Las métricas detalladas permiten comparar el comportamiento de cada pato")
+    print("\nPaso 3: Generando informe HTML avanzado con visualizaciones, modelo 3D y análisis del camarógrafo...")
+    try:
+        report_file = create_enhanced_html_report(
+            data_file, 
+            visualizations_folder, 
+            output_folder,
+            code_files=code_files,
+            include_3d_model=(model_3d_path is not None),
+            cameraman_visualizations_folder=cameraman_visualizations_folder
+        )
+        
+        print(f"\n¡Informe avanzado generado con éxito en {report_file}!")
+        print("Incluye:")
+        print("  - Visualizaciones 2D y 3D estáticas")
+        print("  - Animaciones de movimiento")
+        if model_3d_path:
+            print("  - Modelo 3D interactivo de patos")
+        print("  - Análisis estadísticos detallados")
+        if os.path.exists(cameraman_visualizations_folder):
+            print("  - Análisis del movimiento del camarógrafo")
+        print("  - Código fuente y documentación")
+        print("\nModo de uso:")
+        print("  1. Abre el archivo HTML en tu navegador para ver el informe completo")
+        print("  2. Utiliza las pestañas interactivas para explorar diferentes visualizaciones")
+        if model_3d_path:
+            print("  3. El modelo 3D permite rotación, zoom y exploración completa de las trayectorias")
+        print("  4. Las métricas detalladas permiten comparar el comportamiento de cada pato")
+        if os.path.exists(cameraman_visualizations_folder):
+            print("  5. El análisis del camarógrafo muestra cómo su movimiento puede influir en las trayectorias observadas")
+    except Exception as e:
+        print(f"Error al generar el informe HTML: {e}")
+        import traceback
+        traceback.print_exc()
