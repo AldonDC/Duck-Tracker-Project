@@ -2,7 +2,7 @@
 
 Sistema de seguimiento y análisis de trayectorias de patos utilizando visión por computadora y YOLO.
 
-## 📊 [Ver Informe Interactivo](https://aldondc.github.io/Duck-Tracker-Project/batch_output/informe/informe_avanzado_patos.html)
+## 📊 [Ver Informe Interactivo](https://fluffy-flan-360713.netlify.app/)
 
 ## Descripción
 
@@ -80,15 +80,9 @@ python create_report.py
 
 5. Ver el informe en un navegador web:
    - Abrir `batch_output/informe/informe_avanzado_patos.html`
-   - O visitar [la versión online](https://aldondc.github.io/Duck-Tracker-Project/batch_output/informe/informe_avanzado_patos.html)
+   - O visitar [la versión online en Netlify](https://fluffy-flan-360713.netlify.app/)
 
-## Configuración de GitHub Pages
+## Enlaces
 
-Para ver el informe HTML online, se ha configurado GitHub Pages con la siguiente ruta:
-https://aldondc.github.io/Duck-Tracker-Project/batch_output/informe/informe_avanzado_patos.html
-
-Si deseas configurar GitHub Pages en tu fork de este repositorio:
-1. Ve a Settings > Pages
-2. En Source, selecciona la rama main
-3. Guarda la configuración
-4. El informe estará disponible en https://[tu-usuario].github.io/Duck-Tracker-Project/batch_output/informe/informe_avanzado_patos.html
+- [Repositorio GitHub](https://github.com/AldonDC/Duck-Tracker-Project)
+- [Informe interactivo](https://fluffy-flan-360713.netlify.app/)
