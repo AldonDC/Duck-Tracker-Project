@@ -400,6 +400,44 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             .tab-content.active {
                 display: block;
             }
+            
+            /* Modelo 3D */
+            .model-3d-section {
+                margin: 40px 0;
+                text-align: center;
+            }
+            
+            .model-3d-container {
+                background: white;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .model-3d-iframe {
+                width: 100%;
+                height: 600px;
+                border: none;
+                border-radius: 5px;
+            }
+            
+            .model-3d-link {
+                display: inline-block;
+                margin-top: 15px;
+                background-color: var(--primary-color);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+            
+            .model-3d-link:hover {
+                background-color: var(--secondary-color);
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
@@ -417,14 +455,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     </ul>
                 </li>
                 <li><a href="#animaciones">3. Animaciones del Movimiento</a></li>
-                <li><a href="#estadisticas">4. Análisis Estadístico</a>
+                <li><a href="#modelo-3d">4. Modelo 3D Interactivo</a></li>
+                <li><a href="#estadisticas">5. Análisis Estadístico</a>
                     <ul>
-                        <li><a href="#metricas-individuales">4.1 Métricas por Individuo</a></li>
-                        <li><a href="#patrones-globales">4.2 Patrones Globales</a></li>
+                        <li><a href="#metricas-individuales">5.1 Métricas por Individuo</a></li>
+                        <li><a href="#patrones-globales">5.2 Patrones Globales</a></li>
                     </ul>
                 </li>
-                <li><a href="#codigo">5. Código Fuente</a></li>
-                <li><a href="#conclusiones">6. Conclusiones</a></li>
+                <li><a href="#codigo">6. Código Fuente</a></li>
+                <li><a href="#conclusiones">7. Conclusiones</a></li>
             </ul>
         </div>
         
@@ -526,11 +565,133 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                 
         </section>
         
+        <section id="modelo-3d">
+            <h2>4. Modelo 3D Interactivo</h2>
+            <p>El siguiente modelo 3D permite una exploración interactiva de las trayectorias de los patos, con representaciones tridimensionales de cada individuo según su comportamiento.</p>
+            
+            <div class="model-3d-container">
+                <h3>Exploración Interactiva en 3D</h3>
+                <iframe class="model-3d-iframe" src="../visualizations/modelo_3d_patos_profesional.html" allowfullscreen></iframe>
+                <p class="card-description">Modelo 3D interactivo que permite rotar, hacer zoom y explorar desde cualquier ángulo las trayectorias y representaciones de los patos. Cada pato tiene un tamaño proporcional a su actividad y una orientación basada en su dirección de movimiento predominante.</p>
+                <a href="../visualizations/modelo_3d_patos_profesional.html" target="_blank" class="model-3d-link">Abrir en Ventana Completa</a>
+            </div>
+            
+            <div class="visualization-card">
+                <img src="../visualizations/modelo_3d_patos_profesional.png" alt="Vista estática del modelo 3D">
+                <div class="card-caption">Vista Previa del Modelo 3D</div>
+                <div class="card-description">Captura estática del modelo 3D mostrando la vista general de todos los patos y sus trayectorias en el espacio tridimensional.</div>
+            </div>
+        
+            <div class="visualization-card">
+                <h3>Métricas Detalladas del Modelo 3D</h3>
+                
+    <table style="width:100%; border-collapse: collapse; margin-top: 20px; font-family: Arial;">
+        <tr style="background-color: #3498db; color: white; text-align: center; font-weight: bold;">
+            <th style="padding: 10px; border: 1px solid #ddd;">Pato ID</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Color</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Distancia Total (px)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Velocidad Media (px/f)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Velocidad Máx. (px/f)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Aceleración (px/f²)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Duración (frames)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Rango X (px)</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Rango Y (px)</th>
+        </tr>
+    
+        <tr style="background-color: #f2f2f2;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#18f294">●</span> duck_4</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">2544.5</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">14.46</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">269.47</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">176</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">250.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">440.0</td>
+        </tr>
+        
+        <tr style="background-color: white;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#f21818">●</span> duck_1</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">2475.5</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">12.13</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">253.85</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">204</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">251.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">442.0</td>
+        </tr>
+        
+        <tr style="background-color: #f2f2f2;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#1894f2">●</span> duck_5</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">2422.4</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">14.51</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">357.81</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">167</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">252.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">457.0</td>
+        </tr>
+        
+        <tr style="background-color: white;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#56f218">●</span> duck_3</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">2398.7</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">12.18</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">230.93</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">197</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">239.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">457.0</td>
+        </tr>
+        
+        <tr style="background-color: #f2f2f2;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#f2d318">●</span> duck_2</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">2231.4</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">11.27</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">277.92</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">198</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">231.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">333.0</td>
+        </tr>
+        
+        <tr style="background-color: white;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#5618f2">●</span> duck_6</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">1541.1</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">14.14</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">267.00</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">109</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">138.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">301.0</td>
+        </tr>
+        
+        <tr style="background-color: #f2f2f2;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><b><span style="color:#f218d3">●</span> duck_7</b></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">black</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">1018.4</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">11.98</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">263.43</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0.000</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">85</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">414.0</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">346.0</td>
+        </tr>
+        </table>
+                <div class="card-description">Tabla de métricas detalladas utilizadas para generar el modelo 3D, mostrando los parámetros de movimiento de cada pato que determinan su representación visual.</div>
+            </div>
+            
+        </section>
+        
         <section id="estadisticas">
-            <h2>4. Análisis Estadístico</h2>
+            <h2>5. Análisis Estadístico</h2>
             
             <section id="metricas-individuales">
-                <h3>4.1 Métricas por Individuo</h3>
+                <h3>5.1 Métricas por Individuo</h3>
                 <p>La siguiente tabla muestra las métricas detalladas de movimiento para cada pato detectado, permitiendo comparar el comportamiento individual.</p>
     
                 <table class="stats-table">
@@ -543,7 +704,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             </section>
             
             <section id="patrones-globales">
-                <h3>4.2 Patrones Globales</h3>
+                <h3>5.2 Patrones Globales</h3>
                 <p>Los siguientes gráficos muestran análisis estadísticos agregados de los patrones de movimiento, revelando tendencias generales y correlaciones entre diferentes métricas.</p>
     
                 <div class="visualization-card">
@@ -586,7 +747,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         </section>
         
         <section id="codigo">
-            <h2>5. Código Fuente</h2>
+            <h2>6. Código Fuente</h2>
             <p>A continuación se muestra el código fuente utilizado para generar las visualizaciones y análisis de este informe.</p>
     
             <div class="code-section">
@@ -1533,10 +1694,945 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
             </div>
         
+            <div class="code-section">
+                <div class="code-header">
+                    <div class="code-title">duck_3d_model.py</div>
+                </div>
+                <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">colorsys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_filter1d</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_duck_3d_model</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea un modelo 3D profesional de los patitos con métricas detalladas</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data_file: Ruta al archivo JSON con los datos combinados</span>
+<span class="sd">        output_folder: Carpeta donde guardar el modelo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Crear carpeta de salida si no existe</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cargando datos para crear modelo 3D profesional...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+    <span class="c1"># Extraer datos de frames</span>
+    <span class="n">frames_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frames&#39;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Frames totales cargados: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">frames_data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Preparar estructuras para almacenar trayectorias</span>
+    <span class="n">duck_trajectories</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Diccionario para almacenar trayectorias por ID de pato</span>
+    <span class="n">duck_colors</span> <span class="o">=</span> <span class="p">{}</span>        <span class="c1"># Diccionario para almacenar color de cada pato</span>
+    <span class="n">duck_velocities</span> <span class="o">=</span> <span class="p">{}</span>    <span class="c1"># Almacenar velocidades</span>
+    <span class="n">duck_accelerations</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Almacenar aceleraciones</span>
+    <span class="n">duck_metrics</span> <span class="o">=</span> <span class="p">{}</span>       <span class="c1"># Almacenar métricas calculadas</span>
+    
+    <span class="c1"># Procesar cada frame para extraer trayectorias</span>
+    <span class="k">for</span> <span class="n">frame_idx</span><span class="p">,</span> <span class="n">frame_data</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">frames_data</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">frame_number</span> <span class="o">=</span> <span class="n">frame_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frame_number&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">frame_idx</span><span class="p">))</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">frame_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;positions&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        
+        <span class="k">for</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">duck_data</span> <span class="ow">in</span> <span class="n">positions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">duck_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">duck_trajectories</span><span class="p">:</span>
+                <span class="n">duck_trajectories</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">duck_velocities</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">duck_accelerations</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">duck_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">duck_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+            
+            <span class="n">position</span> <span class="o">=</span> <span class="n">duck_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="n">velocity</span> <span class="o">=</span> <span class="n">duck_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;velocity&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            
+            <span class="k">if</span> <span class="n">position</span><span class="p">:</span>
+                <span class="c1"># Almacenar (x, y, frame) para el modelo 3D</span>
+                <span class="n">duck_trajectories</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">frame_number</span><span class="p">))</span>
+                
+                <span class="c1"># Almacenar velocidad si existe</span>
+                <span class="k">if</span> <span class="n">velocity</span><span class="p">:</span>
+                    <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">velocity</span>
+                    <span class="n">duck_velocities</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">frame_number</span><span class="p">))</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Patos detectados: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">duck_trajectories</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular aceleraciones para cada pato (derivada de velocidad)</span>
+    <span class="k">for</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">velocities</span> <span class="ow">in</span> <span class="n">duck_velocities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">velocities</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">velocities</span><span class="p">)):</span>
+                <span class="n">vx_prev</span><span class="p">,</span> <span class="n">vy_prev</span><span class="p">,</span> <span class="n">frame_prev</span> <span class="o">=</span> <span class="n">velocities</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">vx_curr</span><span class="p">,</span> <span class="n">vy_curr</span><span class="p">,</span> <span class="n">frame_curr</span> <span class="o">=</span> <span class="n">velocities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                
+                <span class="c1"># Calcular cambio en velocidad</span>
+                <span class="n">frame_diff</span> <span class="o">=</span> <span class="n">frame_curr</span> <span class="o">-</span> <span class="n">frame_prev</span>
+                <span class="k">if</span> <span class="n">frame_diff</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Evitar división por cero</span>
+                    <span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">vx_curr</span> <span class="o">-</span> <span class="n">vx_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">frame_diff</span>
+                    <span class="n">ay</span> <span class="o">=</span> <span class="p">(</span><span class="n">vy_curr</span> <span class="o">-</span> <span class="n">vy_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">frame_diff</span>
+                    
+                    <span class="n">duck_accelerations</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">frame_curr</span><span class="p">))</span>
+    
+    <span class="c1"># Convertir trayectorias a arrays numpy para cálculos</span>
+    <span class="n">trajectory_arrays</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">trajectory</span> <span class="ow">in</span> <span class="n">duck_trajectories</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">trajectory_arrays</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">trajectory</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular métricas importantes para cada pato</span>
+    <span class="k">for</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">trajectory_array</span> <span class="ow">in</span> <span class="n">trajectory_arrays</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># Calcular distancia total recorrida</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">total_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+        
+        <span class="c1"># Calcular velocidad promedio</span>
+        <span class="n">time_span</span> <span class="o">=</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">avg_speed</span> <span class="o">=</span> <span class="n">total_distance</span> <span class="o">/</span> <span class="n">time_span</span> <span class="k">if</span> <span class="n">time_span</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        
+        <span class="c1"># Calcular velocidad máxima</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">max_speed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">max_speed</span> <span class="o">=</span> <span class="mi">0</span>
+            
+        <span class="c1"># Calcular aceleración media si hay datos de aceleración</span>
+        <span class="k">if</span> <span class="n">duck_id</span> <span class="ow">in</span> <span class="n">duck_accelerations</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">duck_accelerations</span><span class="p">[</span><span class="n">duck_id</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">acc_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">duck_accelerations</span><span class="p">[</span><span class="n">duck_id</span><span class="p">])</span>
+            <span class="n">avg_acceleration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">acc_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">acc_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">avg_acceleration</span> <span class="o">=</span> <span class="mi">0</span>
+            
+        <span class="c1"># Calcular rango de movimiento</span>
+        <span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">y_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+        
+        <span class="c1"># Guardar métricas</span>
+        <span class="n">duck_metrics</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;total_distance&#39;</span><span class="p">:</span> <span class="n">total_distance</span><span class="p">,</span>
+            <span class="s1">&#39;avg_speed&#39;</span><span class="p">:</span> <span class="n">avg_speed</span><span class="p">,</span>
+            <span class="s1">&#39;max_speed&#39;</span><span class="p">:</span> <span class="n">max_speed</span><span class="p">,</span>
+            <span class="s1">&#39;avg_acceleration&#39;</span><span class="p">:</span> <span class="n">avg_acceleration</span><span class="p">,</span>
+            <span class="s1">&#39;x_range&#39;</span><span class="p">:</span> <span class="n">x_range</span><span class="p">,</span>
+            <span class="s1">&#39;y_range&#39;</span><span class="p">:</span> <span class="n">y_range</span><span class="p">,</span>
+            <span class="s1">&#39;start_frame&#39;</span><span class="p">:</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="s1">&#39;end_frame&#39;</span><span class="p">:</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="s1">&#39;duration&#39;</span><span class="p">:</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">trajectory_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectory_array</span><span class="p">)</span>
+        <span class="p">}</span>
+    
+    <span class="c1"># Generar colores vibrantes para cada pato</span>
+    <span class="n">num_ducks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">duck_trajectories</span><span class="p">)</span>
+    <span class="n">vibrant_colors</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="c1"># Crear colores separados por el espectro de color HSV</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">duck_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">duck_trajectories</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="c1"># Generar un color del espectro HSV</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="n">num_ducks</span>
+        <span class="n">saturation</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="mf">0.95</span>
+        <span class="n">rgb_color</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">hue</span><span class="p">,</span> <span class="n">saturation</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="c1"># Convertir a formato hexadecimal para Plotly</span>
+        <span class="n">hex_color</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;#</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">rgb_color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02x</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">rgb_color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02x</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">rgb_color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02x</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">vibrant_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_color</span>
+    
+    <span class="c1"># Crear figura 3D </span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    
+    <span class="c1"># Función para crear un modelo 3D mejorado del pato</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_enhanced_duck_model</span><span class="p">(</span><span class="n">trajectory_points</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">metrics</span><span class="p">):</span>
+        <span class="c1"># Convertir a array numpy para manipulación</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">trajectory_points</span><span class="p">)</span>
+        
+        <span class="c1"># Suavizar trayectoria para modelo más realista</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">points_smoothed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+            <span class="n">points_smoothed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+            <span class="n">points_smoothed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points_smoothed</span> <span class="o">=</span> <span class="n">points</span>
+        
+        <span class="c1"># Calcular promedio de posiciones para el centro del patito</span>
+        <span class="n">center_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">points_smoothed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">center_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">points_smoothed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">center_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">points_smoothed</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+        
+        <span class="c1"># Determinar dirección de movimiento para orientar el pato</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points_smoothed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Usar los últimos puntos para determinar dirección</span>
+            <span class="n">last_points</span> <span class="o">=</span> <span class="n">points_smoothed</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points_smoothed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="n">points_smoothed</span>
+            <span class="n">avg_dir_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">last_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
+            <span class="n">avg_dir_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">last_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+            
+            <span class="c1"># Normalizar dirección</span>
+            <span class="n">dir_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">avg_dir_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">avg_dir_y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dir_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">avg_dir_x</span> <span class="o">=</span> <span class="n">avg_dir_x</span> <span class="o">/</span> <span class="n">dir_len</span>
+                <span class="n">avg_dir_y</span> <span class="o">=</span> <span class="n">avg_dir_y</span> <span class="o">/</span> <span class="n">dir_len</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Si no hay dirección clara, usar valor por defecto</span>
+                <span class="n">avg_dir_x</span><span class="p">,</span> <span class="n">avg_dir_y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">avg_dir_x</span><span class="p">,</span> <span class="n">avg_dir_y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+        
+        <span class="c1"># Ajustar tamaño del pato según métricas</span>
+        <span class="n">base_size</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="c1"># Escalar según distancia recorrida o duración</span>
+        <span class="k">if</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;total_distance&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">scale_factor</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;total_distance&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">body_size</span> <span class="o">=</span> <span class="n">base_size</span> <span class="o">*</span> <span class="n">scale_factor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">body_size</span> <span class="o">=</span> <span class="n">base_size</span>
+        
+        <span class="c1"># Crear &quot;cuerpo&quot; del pato como una elipsoide orientada según la dirección</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        
+        <span class="c1"># Crear cuerpo elipsoide</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">body_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">body_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">body_size</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>  <span class="c1"># Aplanar verticalmente</span>
+        
+        <span class="c1"># Rotar según la dirección de movimiento</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">avg_dir_y</span><span class="p">,</span> <span class="n">avg_dir_x</span><span class="p">)</span>
+        <span class="n">rot_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">])</span>
+        
+        <span class="c1"># Aplicar rotación y traslación</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                <span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]])</span>
+                <span class="n">rotated_point</span> <span class="o">=</span> <span class="n">rot_matrix</span> <span class="o">@</span> <span class="n">point</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">center_x</span>
+                <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">center_y</span>
+                <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">center_z</span>
+        
+        <span class="c1"># Crear superficie del cuerpo</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+            <span class="n">colorscale</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="p">]],</span>
+            <span class="n">showscale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cuerpo de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+        
+        <span class="c1"># Crear &quot;cabeza&quot; - otra elipsoide más pequeña</span>
+        <span class="n">head_size</span> <span class="o">=</span> <span class="n">body_size</span> <span class="o">*</span> <span class="mf">0.6</span>
+        <span class="n">head_dist</span> <span class="o">=</span> <span class="n">body_size</span> <span class="o">*</span> <span class="mf">0.8</span>  <span class="c1"># Distancia de la cabeza al cuerpo</span>
+        
+        <span class="c1"># Posición de la cabeza según dirección</span>
+        <span class="n">head_x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">head_dist</span> <span class="o">*</span> <span class="n">avg_dir_x</span>
+        <span class="n">head_y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">head_dist</span> <span class="o">*</span> <span class="n">avg_dir_y</span>
+        
+        <span class="c1"># Crear cabeza elipsoide</span>
+        <span class="n">x_head</span> <span class="o">=</span> <span class="n">head_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">y_head</span> <span class="o">=</span> <span class="n">head_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">z_head</span> <span class="o">=</span> <span class="n">head_size</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        
+        <span class="c1"># Aplicar rotación y traslación</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_head</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_head</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                <span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">y_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">z_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]])</span>
+                <span class="n">rotated_point</span> <span class="o">=</span> <span class="n">rot_matrix</span> <span class="o">@</span> <span class="n">point</span>
+                <span class="n">x_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">head_x</span>
+                <span class="n">y_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">head_y</span>
+                <span class="n">z_head</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">center_z</span>
+        
+        <span class="c1"># Crear superficie de la cabeza</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">x_head</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_head</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z_head</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+            <span class="n">colorscale</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="p">]],</span>
+            <span class="n">showscale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cabeza de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+        
+        <span class="c1"># Crear &quot;pico&quot; - una pirámide</span>
+        <span class="n">beak_size</span> <span class="o">=</span> <span class="n">head_size</span> <span class="o">*</span> <span class="mf">0.5</span>
+        <span class="c1"># Posición del pico (adelante de la cabeza)</span>
+        <span class="n">beak_x</span> <span class="o">=</span> <span class="n">head_x</span> <span class="o">+</span> <span class="n">head_size</span> <span class="o">*</span> <span class="n">avg_dir_x</span> <span class="o">*</span> <span class="mf">0.8</span>
+        <span class="n">beak_y</span> <span class="o">=</span> <span class="n">head_y</span> <span class="o">+</span> <span class="n">head_size</span> <span class="o">*</span> <span class="n">avg_dir_y</span> <span class="o">*</span> <span class="mf">0.8</span>
+        
+        <span class="c1"># Determinar color del pico según tipo de pato</span>
+        <span class="k">if</span> <span class="n">duck_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;yellow&#39;</span><span class="p">:</span>
+            <span class="n">beak_color</span> <span class="o">=</span> <span class="s1">&#39;#FF8000&#39;</span>  <span class="c1"># Naranja para patos amarillos</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">beak_color</span> <span class="o">=</span> <span class="s1">&#39;#FF2000&#39;</span>  <span class="c1"># Rojo para patos negros</span>
+        
+        <span class="c1"># Agregar pico triangular</span>
+        <span class="n">tip_x</span> <span class="o">=</span> <span class="n">beak_x</span> <span class="o">+</span> <span class="n">beak_size</span> <span class="o">*</span> <span class="n">avg_dir_x</span> <span class="o">*</span> <span class="mf">1.2</span>
+        <span class="n">tip_y</span> <span class="o">=</span> <span class="n">beak_y</span> <span class="o">+</span> <span class="n">beak_size</span> <span class="o">*</span> <span class="n">avg_dir_y</span> <span class="o">*</span> <span class="mf">1.2</span>
+        
+        <span class="c1"># Base del pico (un cuadrado perpendicular a la dirección)</span>
+        <span class="n">perp_dir_x</span><span class="p">,</span> <span class="n">perp_dir_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">avg_dir_y</span><span class="p">,</span> <span class="n">avg_dir_x</span>  <span class="c1"># Vector perpendicular</span>
+        
+        <span class="n">base_points</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="n">beak_x</span> <span class="o">+</span> <span class="n">perp_dir_x</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">beak_y</span> <span class="o">+</span> <span class="n">perp_dir_y</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">+</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">beak_x</span> <span class="o">-</span> <span class="n">perp_dir_x</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">beak_y</span> <span class="o">-</span> <span class="n">perp_dir_y</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">+</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">beak_x</span> <span class="o">-</span> <span class="n">perp_dir_x</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">beak_y</span> <span class="o">-</span> <span class="n">perp_dir_y</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">beak_x</span> <span class="o">+</span> <span class="n">perp_dir_x</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">beak_y</span> <span class="o">+</span> <span class="n">perp_dir_y</span> <span class="o">*</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">beak_size</span><span class="o">*</span><span class="mf">0.2</span><span class="p">]</span>
+        <span class="p">]</span>
+        
+        <span class="c1"># Triángulos del pico (uno por cada cara)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Mesh3d</span><span class="p">(</span>
+                <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">tip_x</span><span class="p">,</span> <span class="n">base_points</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">base_points</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
+                <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">tip_y</span><span class="p">,</span> <span class="n">base_points</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">base_points</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span>
+                <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="n">center_z</span><span class="p">,</span> <span class="n">base_points</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">base_points</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]],</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">beak_color</span><span class="p">,</span>
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Pico de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">))</span>
+        
+        <span class="c1"># Añadir trayectoria como línea</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+            <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trayectoria de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+        
+        <span class="c1"># Añadir puntos de inicio y fin</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Inicio de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+        
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;diamond&#39;</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Fin de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+        
+        <span class="c1"># Añadir etiqueta en 3D con métricas resumidas</span>
+        <span class="n">metrics_text</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s2">&lt;br&gt;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Dist: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;total_distance&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> px&lt;br&gt;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Vel: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;avg_speed&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> px/f&quot;</span>
+        <span class="p">)</span>
+        
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">center_x</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">center_y</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="n">center_z</span> <span class="o">+</span> <span class="n">body_size</span> <span class="o">+</span> <span class="mi">10</span><span class="p">],</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="n">metrics_text</span><span class="p">],</span>
+            <span class="n">textfont</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial Bold&#39;</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Etiqueta de </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="p">))</span>
+    
+    <span class="c1"># Crear modelos 3D para cada pato</span>
+    <span class="k">for</span> <span class="n">duck_id</span><span class="p">,</span> <span class="n">trajectory</span> <span class="ow">in</span> <span class="n">duck_trajectories</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Solo crear modelo si hay suficientes puntos</span>
+            <span class="n">create_enhanced_duck_model</span><span class="p">(</span>
+                <span class="n">trajectory</span><span class="p">,</span> 
+                <span class="n">vibrant_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">],</span> 
+                <span class="n">duck_id</span><span class="p">,</span> 
+                <span class="n">duck_metrics</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span>
+            <span class="p">)</span>
+    
+    <span class="c1"># Crear tabla de métricas</span>
+    <span class="n">metrics_table</span> <span class="o">=</span> <span class="n">create_metrics_table</span><span class="p">(</span><span class="n">duck_metrics</span><span class="p">,</span> <span class="n">duck_colors</span><span class="p">,</span> <span class="n">vibrant_colors</span><span class="p">)</span>
+    
+    <span class="c1"># Configurar la escena 3D</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">scene</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;X (píxeles)&#39;</span><span class="p">,</span>
+            <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Y (píxeles)&#39;</span><span class="p">,</span>
+            <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;Frame&#39;</span><span class="p">,</span>
+            <span class="n">aspectmode</span><span class="o">=</span><span class="s1">&#39;data&#39;</span>
+        <span class="p">),</span>
+        <span class="n">title</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s2">&quot;Modelo 3D Profesional de Patos&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="s1">&#39;xanchor&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;yanchor&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span>
+        <span class="p">},</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+            <span class="n">xanchor</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">bgcolor</span><span class="o">=</span><span class="s2">&quot;rgba(255, 255, 255, 0.5)&quot;</span>
+        <span class="p">),</span>
+        <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Guardar como HTML interactivo</span>
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="s1">&#39;modelo_3d_patos_profesional.html&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modelo 3D profesional interactivo guardado en: </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Guardar también una versión estática como imagen de alta resolución</span>
+    <span class="n">static_output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="s1">&#39;modelo_3d_patos_profesional.png&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">static_output</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Imagen estática del modelo guardada en: </span><span class="si">{</span><span class="n">static_output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Guardar métricas detalladas en CSV</span>
+    <span class="n">metrics_csv</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="s1">&#39;metricas_detalladas_patos.csv&#39;</span><span class="p">)</span>
+    <span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">duck_metrics</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">metrics_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;duck_id&#39;</span>
+    <span class="n">metrics_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">metrics_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">metrics_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Métricas detalladas guardadas en: </span><span class="si">{</span><span class="n">metrics_csv</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">¡Modelo 3D profesional de patos creado con éxito!&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">output_file</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_metrics_table</span><span class="p">(</span><span class="n">duck_metrics</span><span class="p">,</span> <span class="n">duck_colors</span><span class="p">,</span> <span class="n">vibrant_colors</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea una tabla HTML con métricas detalladas de los patos</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        duck_metrics: Diccionario con métricas por pato</span>
+<span class="sd">        duck_colors: Colores originales de los patos</span>
+<span class="sd">        vibrant_colors: Colores usados en la visualización</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Tabla HTML con las métricas</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metrics_html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;table style=&quot;width:100%; border-collapse: collapse; margin-top: 20px; font-family: Arial;&quot;&gt;</span>
+<span class="s2">        &lt;tr style=&quot;background-color: #3498db; color: white; text-align: center; font-weight: bold;&quot;&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Pato ID&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Color&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Distancia Total (px)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Velocidad Media (px/f)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Velocidad Máx. (px/f)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Aceleración (px/f²)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Duración (frames)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Rango X (px)&lt;/th&gt;</span>
+<span class="s2">            &lt;th style=&quot;padding: 10px; border: 1px solid #ddd;&quot;&gt;Rango Y (px)&lt;/th&gt;</span>
+<span class="s2">        &lt;/tr&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Ordenar patos por distancia total</span>
+    <span class="n">sorted_ducks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">duck_metrics</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">duck_metrics</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;total_distance&#39;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Alternar colores de fila</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">duck_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_ducks</span><span class="p">):</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="n">duck_metrics</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span>
+        <span class="n">bg_color</span> <span class="o">=</span> <span class="s2">&quot;#f2f2f2&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;white&quot;</span>
+        <span class="n">color_dot</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;span style=&quot;color:</span><span class="si">{</span><span class="n">vibrant_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span><span class="si">}</span><span class="s1">&quot;&gt;●&lt;/span&gt;&#39;</span>
+        
+        <span class="n">metrics_html</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &lt;tr style=&quot;background-color: </span><span class="si">{</span><span class="n">bg_color</span><span class="si">}</span><span class="s2">;&quot;&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;&lt;b&gt;</span><span class="si">{</span><span class="n">color_dot</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">duck_id</span><span class="si">}</span><span class="s2">&lt;/b&gt;&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">duck_colors</span><span class="p">[</span><span class="n">duck_id</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;total_distance&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;avg_speed&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;max_speed&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;avg_acceleration&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;x_range&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">            &lt;td style=&quot;padding: 8px; border: 1px solid #ddd;&quot;&gt;</span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;y_range&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">        &lt;/tr&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    
+    <span class="n">metrics_html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/table&gt;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">metrics_html</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Ruta al archivo de datos combinados</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;/home/alfonso/Duck-Tracker/batch_output/merged_results/merged_tracking_data.json&quot;</span>
+    
+    <span class="c1"># Carpeta para guardar las visualizaciones</span>
+    <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;/home/alfonso/Duck-Tracker/batch_output/visualizations&quot;</span>
+    
+    <span class="c1"># Generar modelo 3D profesional</span>
+    <span class="n">model_file</span> <span class="o">=</span> <span class="n">create_duck_3d_model</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Puedes abrir el archivo HTML en tu navegador para interactuar con el modelo 3D profesional: </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El modelo incluye:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  - Modelos 3D realistas de cada pato con escala proporcional a su movimiento&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  - Métricas precisas de distancia, velocidad y aceleración&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  - Tabla detallada con todas las estadísticas&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estos datos te permiten evaluar el comportamiento de los patos de forma precisa.&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+
+            </div>
+        
         </section>
         
         <section id="conclusiones">
-            <h2>6. Conclusiones</h2>
+            <h2>7. Conclusiones</h2>
             <p>El análisis detallado de las trayectorias de los patos revela patrones de comportamiento significativos:</p>
             <ul>
     
@@ -1548,13 +2644,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
                 <li>Las visualizaciones de mapas de calor muestran zonas claramente definidas de alta densidad, sugiriendo áreas de interés o recursos dentro del espacio monitoreado.</li>
                 <li>La animación tridimensional revela interacciones temporales entre individuos, mostrando posibles comportamientos sociales o respuestas a estímulos externos.</li>
+                <li>El modelo 3D interactivo permite identificar comportamientos distintivos de cada pato, facilitando la clasificación de patrones de comportamiento.</li>
             </ul>
             
             <p>Estos patrones de movimiento proporcionan información valiosa sobre el comportamiento de los patos en entornos controlados, contribuyendo a una mejor comprensión de su ecología y comportamiento social.</p>
         </section>
         
         <section>
-            <h2>7. Visualizaciones Interactivas</h2>
+            <h2>8. Visualizaciones Interactivas</h2>
             <p>A continuación se presentan visualizaciones interactivas que permiten explorar los datos de diferentes maneras.</p>
             
             <div class="interactive-section">
@@ -1565,6 +2662,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                         <button class="tab-btn active" onclick="openTab(event, 'tab-trayectorias')">Trayectorias</button>
                         <button class="tab-btn" onclick="openTab(event, 'tab-velocidades')">Velocidades</button>
                         <button class="tab-btn" onclick="openTab(event, 'tab-densidad')">Mapas de Calor</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-modelo3d')">Modelo 3D</button>
                     </div>
                     
                     <div id="tab-trayectorias" class="tab-content active">
@@ -1583,6 +2681,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                         <h4>Mapas de Calor</h4>
                         <p>Visualización de áreas de mayor concentración de patos.</p>
                         <img src="../visualizations/mapa_densidad_trayectorias_colores.png" alt="Mapa de Calor" style="width:100%; max-width:800px;">
+                    </div>
+                    
+                    <div id="tab-modelo3d" class="tab-content">
+                        <h4>Modelo 3D Interactivo</h4>
+                        <p>Exploración tridimensional de las trayectorias con modelos 3D.</p>
+                        <img src="../visualizations/modelo_3d_patos_profesional.png" alt="Modelo 3D" style="width:100%; max-width:800px;">
+                        <p><a href="../visualizations/modelo_3d_patos_profesional.html" target="_blank" class="model-3d-link">Explorar Modelo 3D Interactivo</a></p>
                     </div>
                 </div>
             </div>
