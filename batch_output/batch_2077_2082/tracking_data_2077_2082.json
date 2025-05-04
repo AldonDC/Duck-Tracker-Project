@@ -1,0 +1,43 @@
+{
+    "total_frames": 6,
+    "grid_size": [
+        8,
+        8
+    ],
+    "frames": {
+        "0": {
+            "positions": {},
+            "frame_number": 2077,
+            "batch_frame_number": 0
+        },
+        "1": {
+            "positions": {},
+            "frame_number": 2078,
+            "batch_frame_number": 1
+        },
+        "2": {
+            "positions": {},
+            "frame_number": 2079,
+            "batch_frame_number": 2
+        },
+        "3": {
+            "positions": {},
+            "frame_number": 2080,
+            "batch_frame_number": 3
+        },
+        "4": {
+            "positions": {},
+            "frame_number": 2081,
+            "batch_frame_number": 4
+        },
+        "5": {
+            "positions": {},
+            "frame_number": 2082,
+            "batch_frame_number": 5
+        }
+    },
+    "tracking_params": {
+        "min_confidence": 0.3,
+        "min_distance": 20
+    }
+}

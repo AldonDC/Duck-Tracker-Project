@@ -1,0 +1,275 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Análisis de Movimiento de Patos</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+            }
+            h1, h2, h3 {
+                color: #2c3e50;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 10px;
+            }
+            h2 {
+                margin-top: 40px;
+                border-left: 5px solid #3498db;
+                padding-left: 15px;
+            }
+            .visualization {
+                margin: 30px 0;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            .visualization img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+            .caption {
+                text-align: center;
+                margin-top: 15px;
+                font-style: italic;
+                color: #7f8c8d;
+            }
+            .stats-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+            .stats-table th, .stats-table td {
+                border: 1px solid #ddd;
+                padding: 8px 12px;
+                text-align: left;
+            }
+            .stats-table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            .stats-table th {
+                background-color: #3498db;
+                color: white;
+            }
+            pre {
+                background-color: #f8f8f8;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 15px;
+                white-space: pre-wrap;
+                font-family: 'Courier New', monospace;
+            }
+            .footer {
+                margin-top: 50px;
+                text-align: center;
+                font-size: 0.9em;
+                color: #7f8c8d;
+                border-top: 1px solid #ddd;
+                padding-top: 20px;
+            }
+            .header-info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                color: #7f8c8d;
+                font-size: 0.9em;
+            }
+            .video-info {
+                background-color: #e9f7fe;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .animation {
+                text-align: center;
+                margin: 30px 0;
+            }
+            .animation video {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header-info">
+            <div>Fecha de generación: 03/05/2025 23:31:06</div>
+        </div>
+        
+        <h1>Análisis de Movimiento de Patos</h1>
+        
+        <div class="video-info">
+            <h3>Información General</h3>
+            <p>Total de frames procesados: <strong>2083</strong></p>
+            <p>Total de patos detectados: <strong>0</strong></p>
+        </div>
+        
+        <h2>1. Visualización de Trayectorias</h2>
+        
+        <div class="visualization">
+            <img src="../visualizations/trayectorias_3d.png" alt="Trayectorias 3D">
+            <p class="caption">Figura 1: Visualización 3D de las trayectorias de los patos a lo largo del video.</p>
+        </div>
+        
+        <div class="visualization">
+            <img src="../visualizations/trayectorias_2d.png" alt="Trayectorias 2D">
+            <p class="caption">Figura 2: Proyección 2D de las trayectorias de los patos.</p>
+        </div>
+        
+        <div class="animation">
+            <h3>Animación de Trayectorias</h3>
+            <video width="800" height="600" controls>
+                <source src="../visualizations/animacion_trayectorias.mp4" type="video/mp4">
+                Tu navegador no soporta el tag de video.
+            </video>
+            <p class="caption">Animación 1: Evolución de las trayectorias de los patos a lo largo del tiempo.</p>
+        </div>
+        
+        <h2>2. Análisis de Densidad y Mapas de Calor</h2>
+        
+        <div class="visualization">
+            <img src="../visualizations/mapa_densidad.png" alt="Mapa de Densidad">
+            <p class="caption">Figura 3: Mapa de densidad de las posiciones de los patos.</p>
+        </div>
+        
+        <div class="visualization">
+            <img src="../visualizations/mapa_calor_trayectorias.png" alt="Mapa de Calor con Trayectorias">
+            <p class="caption">Figura 4: Mapa de calor combinado con las trayectorias de los patos.</p>
+        </div>
+        
+        <div class="visualization">
+            <img src="../visualizations/mapa_calor_cuadricula.png" alt="Mapa de Calor de Cuadrícula">
+            <p class="caption">Figura 5: Mapa de calor de las posiciones de los patos en la cuadrícula.</p>
+        </div>
+        
+        <h2>3. Análisis Estadístico de Movimiento</h2>
+    
+        <h3>Estadísticas de Movimiento por Pato</h3>
+        <table class="stats-table">
+            <tr>
+                <th>ID</th>
+                <th>Color</th>
+                <th>Frames</th>
+                <th>Distancia Total</th>
+                <th>Velocidad Promedio</th>
+                <th>Velocidad Máxima</th>
+                <th>Duración</th>
+            </tr>
+        
+            <tr>
+                <td>duck_4</td>
+                <td>black</td>
+                <td>129</td>
+                <td>2544.55</td>
+                <td>15.36</td>
+                <td>269.47</td>
+                <td>176</td>
+            </tr>
+            
+            <tr>
+                <td>duck_1</td>
+                <td>black</td>
+                <td>197</td>
+                <td>2475.47</td>
+                <td>10.78</td>
+                <td>244.97</td>
+                <td>204</td>
+            </tr>
+            
+            <tr>
+                <td>duck_5</td>
+                <td>black</td>
+                <td>113</td>
+                <td>2422.38</td>
+                <td>18.74</td>
+                <td>357.81</td>
+                <td>167</td>
+            </tr>
+            
+            <tr>
+                <td>duck_3</td>
+                <td>black</td>
+                <td>166</td>
+                <td>2398.70</td>
+                <td>13.06</td>
+                <td>230.93</td>
+                <td>197</td>
+            </tr>
+            
+            <tr>
+                <td>duck_2</td>
+                <td>black</td>
+                <td>171</td>
+                <td>2231.40</td>
+                <td>10.54</td>
+                <td>187.49</td>
+                <td>198</td>
+            </tr>
+            
+            <tr>
+                <td>duck_6</td>
+                <td>black</td>
+                <td>70</td>
+                <td>1541.08</td>
+                <td>18.02</td>
+                <td>267.00</td>
+                <td>109</td>
+            </tr>
+            
+            <tr>
+                <td>duck_7</td>
+                <td>black</td>
+                <td>28</td>
+                <td>1018.43</td>
+                <td>9.56</td>
+                <td>66.86</td>
+                <td>85</td>
+            </tr>
+            </table>
+        <h3>Gráficos Estadísticos</h3>
+    
+                <div class="visualization">
+                    <img src="../visualizations/distancia_total_por_pato.png" alt="Distancia Total Recorrida por Pato">
+                    <p class="caption">Distancia Total Recorrida por Pato</p>
+                </div>
+                
+                <div class="visualization">
+                    <img src="../visualizations/velocidad_promedio_por_pato.png" alt="Velocidad Promedio por Pato">
+                    <p class="caption">Velocidad Promedio por Pato</p>
+                </div>
+                
+                <div class="visualization">
+                    <img src="../visualizations/velocidad_vs_distancia.png" alt="Relación entre Distancia y Velocidad">
+                    <p class="caption">Relación entre Distancia y Velocidad</p>
+                </div>
+                
+                <div class="visualization">
+                    <img src="../visualizations/duracion_por_pato.png" alt="Duración de Aparición en Video por Pato">
+                    <p class="caption">Duración de Aparición en Video por Pato</p>
+                </div>
+                
+                <div class="visualization">
+                    <img src="../visualizations/evolucion_velocidad.png" alt="Evolución de Velocidad a lo Largo del Tiempo">
+                    <p class="caption">Evolución de Velocidad a lo Largo del Tiempo</p>
+                </div>
+                
+        <div class="footer">
+            <p>Informe generado usando el sistema de análisis de movimiento de patos.</p>
+        </div>
+    </body>
+    </html>
+    

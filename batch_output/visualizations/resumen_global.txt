@@ -1,0 +1,12 @@
+RESUMEN ESTADÍSTICO GLOBAL
+=========================
+
+Total de patos analizados: 7
+Distancia total promedio: 2090.29 píxeles
+Velocidad promedio global: 13.72 píxeles/frame
+Velocidad máxima registrada: 357.81 píxeles/frame (Pato duck_5)
+Duración promedio en video: 163.3 frames
+
+Pato más activo: duck_4 (Distancia: 2544.55 píxeles)
+Pato más rápido: duck_5 (Velocidad: 18.74 píxeles/frame)
+Pato con mayor tiempo en video: duck_1 (205 frames)
